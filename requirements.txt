@@ -108,7 +108,7 @@ pyreadline3==3.5.4
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.1
 pyvis==0.3.2
-pywin32==311
+pywin32==311; sys_platform == 'win32'
 PyYAML==6.0.3
 referencing==0.36.2
 regex==2025.9.18
@@ -142,6 +142,7 @@ websocket-client==1.8.0
 websockets==15.0.1
 yarl==1.20.1
 zipp==3.23.0
+
 
 
 
