@@ -11,10 +11,10 @@ llm=LLM(
     temperature=0.2,
 )
 
-marketing_agent=Agent(
-    role="Marketing Expert",
-    goal="Create marketing plans & ad copy",
-    backstory="Experienced marketer with SEO and social campaigns",
+Health_agent=Agent(
+    role="Health care Expert",
+    goal="Give the tips to containing the good health",
+    backstory="Experienced in the giving tips to health care",
     llm=llm,
 
     verbose=True
