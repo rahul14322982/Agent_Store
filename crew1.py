@@ -1,10 +1,10 @@
 from crewai import Crew
 
-from agents1 import marketing_agent
-from tasks1 import marketing_task
+from agents1 import Health_agent
+from tasks1 import Health_task
 
 crew=Crew(
-    agents=[marketing_agent],
-    tasks=[marketing_task],
+    agents=[Health_agent],
+    tasks=[Health_task],
     verbose=True
 )
