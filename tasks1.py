@@ -1,8 +1,8 @@
 from crewai import Task
-from agents1 import marketing_agent
+from agents1 import Health_agent
 
-marketing_task=Task(
-    description="Generate a 30-day marketing plan and ad copy for a product",
-    agent=marketing_agent,
-    expected_output="A structured plan with ad copy"
+Health_task=Task(
+    description="give good suggestion in the field of Health and what user will give the input based that give the suggestions",
+    agent=Health_agent,
+    expected_output="A structured plan with understander manner and in point wished manner"
 )
