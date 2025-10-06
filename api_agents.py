@@ -1,6 +1,6 @@
 from fastapi import APIRouter,HTTPException
 from pydantic import BaseModel
-from crew_runner import run_health_agent as run_marketing_logic
+from crew_runner import run_health_agent as run_health_logic
 from typing import Any
 
 router=APIRouter()
@@ -12,7 +12,7 @@ class RunRequest(BaseModel):
 @router.post("/agents1/health/run")
 def run_health_agent(req:RunRequest):
     try:
-        result = run_marketing_logic(req.inputs1)
+        result = run_health_logic(req.inputs1)
         return {"result":result}
     except Exception as e:
         raise HTTPException(status_code=500,detail=str(e))
