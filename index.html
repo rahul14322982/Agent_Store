@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Store - Health</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+        input {
+            width: 300px;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            margin-top: 20px;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* preserve line breaks */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ask Something About Health</h1>
+    <input type="text" id="userInput" placeholder="Type your question here..." />
+    <button onclick="sendMessage()">Ask</button>
+
+    <pre id="responseBox"></pre>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value.trim();
+            const responseBox = document.getElementById("responseBox");
+
+            if (!userInput) return;
+
+            responseBox.textContent = "Loading...";
+
+            const data = {
+                "inputs1": [
+                    {
+                        "role": "user",
+                        "content": userInput
+                    }
+                ]
+            };
+
+            try {
+                const response = await fetch("https://agent-store-backend-ejwn.onrender.com/agents/agents1/health/run", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error("Network response was not ok");
+
+                const result = await response.json();
+
+                // ✅ Only show the 'raw' field
+                const rawText = result.result?.raw || "No response from backend";
+                responseBox.textContent = rawText;
+
+            } catch (error) {
+                responseBox.textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+
+</body>
+</html>
